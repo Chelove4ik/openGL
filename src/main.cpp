@@ -1,10 +1,9 @@
 #include <iostream>
-
-//glew
 #include <GL/glew.h>
-
-//sfml
 #include <SFML/Window.hpp>
+#include <shaderLoader.h>
+
+#include "Triangle.h"
 
 using namespace std;
 
@@ -18,7 +17,7 @@ int main() {
 
     sf::Window window(sf::VideoMode(800, 600, 32), "First Window",
                       sf::Style::Titlebar | sf::Style::Close);
-
+    window.setFramerateLimit(60);
     glewExperimental = GL_TRUE; // включить все современные функции ogl
 
     if (GLEW_OK != glewInit()) { // включить glew
@@ -27,9 +26,10 @@ int main() {
     }
 
     bool isGo = true;
+    auto triangle = Triangle();
 
     while (isGo) {
-        sf::Event windowEvent;
+        sf::Event windowEvent{};
 
         while (window.pollEvent(windowEvent)) { // обработка ивентов
             switch (windowEvent.type)
@@ -43,9 +43,10 @@ int main() {
         }
 
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f); //отчистка экрана
-        glClear(GL_COLOR_BUFFER_BIT); //отчистка экрана
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //отчистка экрана
 
         //...
+        triangle.draw({4, 3, 3});
 
         window.display();
     }
