@@ -12,7 +12,7 @@ add_executable(my_open_gl
         utils/shaderLoader.cpp #utils/assimpParser.cpp
         ${PROJECT_SOURCE_DIR}/libs/imgui-1.88/imgui.cpp ${PROJECT_SOURCE_DIR}/libs/imgui-1.88/imgui_widgets.cpp ${PROJECT_SOURCE_DIR}/libs/imgui-1.88/imgui_draw.cpp ${PROJECT_SOURCE_DIR}/libs/imgui-1.88/imgui_tables.cpp
         ${PROJECT_SOURCE_DIR}/libs/imgui-sfml-2.5/imgui-SFML.cpp
-        Triangle.cpp ../include/Triangle.h)
+        Triangle.cpp ../include/Triangle.h Cube.cpp ../include/Cube.h)
 
 target_link_libraries(my_open_gl math_lib)
 target_link_libraries(my_open_gl libglew_static)
